@@ -191,6 +191,11 @@ app.MapGet(
 async Task<IResult> Create(RunInput input, CaseDb db, CancellationToken ct)
 {
     if (
+        input.Left.ValueKind != JsonValueKind.Object
+        || input.Right.ValueKind != JsonValueKind.Object
+    )
+        throw new ApiFault(400, "İki snapshot da JSON nesnesi olmalı.");
+    if (
         string.IsNullOrWhiteSpace(input.Title)
         || input.Title.Length > 100
         || input.Log?.Length > 1_000_000

@@ -77,6 +77,7 @@ test("validation, redaction and local origin boundaries", async () => {
   const invalid = structuredClone(example);
   invalid.right.files = ["../escape.ts"];
   await api("/api/cases", "POST", { title: "Invalid", ...invalid }, 400);
+  await api("/api/cases", "POST", { title: "Missing snapshots" }, 400);
   await api(
     "/api/cases",
     "POST",

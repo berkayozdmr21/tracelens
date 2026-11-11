@@ -120,6 +120,9 @@ class Constraints(unittest.TestCase):
             ("24.1.0", "lts/*", None),
             ("20.0.0-rc.1", ">=20", None),
             ("24.1.0", "20 || 24", None),
+            ("24.1.0", "^24junk", None),
+            ("24.1.0", "~24 || 25", None),
+            ("24.1.0", "^24.0.0-beta", None),
         ]
         for version, constraint, expected in cases:
             with self.subTest(constraint=constraint, version=version):
@@ -127,6 +130,20 @@ class Constraints(unittest.TestCase):
 
 
 class Privacy(unittest.TestCase):
+    def test_import_and_shell_evidence_cannot_use_truthy_strings(self):
+        source = copy.deepcopy(DEMO["right"])
+        source["imports"][0]["caseMismatch"] = "false"
+        with self.assertRaises(ValueError):
+            snapshot(source)
+        source["imports"][0]["caseMismatch"] = True
+        source["imports"][0]["target"] = None
+        with self.assertRaises(ValueError):
+            snapshot(source)
+        source = copy.deepcopy(DEMO["right"])
+        source["scripts"][0]["crlf"] = "false"
+        with self.assertRaises(ValueError):
+            snapshot(source)
+
     def test_unknown_fields_and_environment_values_are_removed(self):
         source = copy.deepcopy(DEMO["left"])
         source["rawEnvironment"] = {"PASSWORD": "do-not-export"}

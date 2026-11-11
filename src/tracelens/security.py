@@ -126,19 +126,23 @@ def snapshot(value):
         if not isinstance(line, int) or not 1 <= line <= 1000000:
             raise ValueError("Invalid import line.")
         target = entry.get("target")
+        mismatch = entry.get("caseMismatch", False)
+        if not isinstance(mismatch, bool) or (mismatch and not target):
+            raise ValueError("Case mismatch requires boolean evidence and a target path.")
         imports.append(
             {
                 "file": relative_path(entry["file"]),
                 "line": line,
                 "spec": string(entry.get("spec", ""), 250),
                 "target": relative_path(target) if target else None,
-                "caseMismatch": bool(entry.get("caseMismatch", False)),
+                "caseMismatch": mismatch,
             }
         )
-    scripts = [
-        {"file": relative_path(s["file"]), "crlf": bool(s.get("crlf"))}
-        for s in value.get("scripts", [])[:100]
-    ]
+    scripts = []
+    for entry in value.get("scripts", [])[:100]:
+        if not isinstance(entry.get("crlf"), bool):
+            raise ValueError("Shell line ending evidence must be a boolean.")
+        scripts.append({"file": relative_path(entry["file"]), "crlf": entry["crlf"]})
     return {
         "schemaVersion": 1,
         "label": label,

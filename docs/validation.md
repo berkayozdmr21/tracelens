@@ -4,7 +4,7 @@ Tests check observable behavior and boundary conditions. They do not claim unive
 
 ## Engine: unittest
 
-27 test methods cover deterministic fixture counts, clean comparisons, missing versus unprobed runtimes, unsupported constraints, filesystem case-sensitivity evidence, dependency wording, stable IDs, original log lines, redaction, imported-field dropping, traversal rejection, safe bundles, source-free handoffs, capture without project hooks, runtime-version parsing, local-executable rejection, .NET metadata, CLI round trips and symlink handling. The Windows symlink case skips where link creation is unavailable.
+28 test methods cover deterministic fixture counts, clean comparisons, missing versus unprobed runtimes, unsupported constraints, filesystem case-sensitivity evidence, dependency wording, stable IDs, original log lines, redaction, imported-field dropping, strict evidence booleans, traversal rejection, safe bundles, source-free handoffs, capture without project hooks, runtime-version parsing, local-executable rejection, .NET metadata, CLI round trips and symlink handling. The Windows symlink case skips where link creation is unavailable.
 
 The CI matrix runs Windows/Linux with Python 3.9 and 3.12. This checks cross-platform capture behavior; the synthetic Windows/Linux fixture is clearly distinguished from the actual runner environment.
 

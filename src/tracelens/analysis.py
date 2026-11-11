@@ -27,6 +27,8 @@ def satisfies(version, constraint):
     if "||" in text:
         return None
     if text.startswith("^"):
+        if not re.fullmatch(r"\^\d+(?:\.\d+){0,2}", text):
+            return None
         base = version_tuple(text[1:])
         if base is None:
             return None
@@ -37,6 +39,8 @@ def satisfies(version, constraint):
         )
         return base <= current < upper
     if text.startswith("~"):
+        if not re.fullmatch(r"~\d+(?:\.\d+){0,2}", text):
+            return None
         base = version_tuple(text[1:])
         upper = (
             (base[0] + 1, 0, 0)

@@ -1,7 +1,7 @@
 name: Verify TraceLens
 on:
   push:
-    branches: [main, "feat/**", "fix/**"]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 permissions:
