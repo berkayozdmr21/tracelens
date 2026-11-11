@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "tracelens-local"
+version = "0.1.0"
+description = "Evidence-based environment drift diagnostics, local CLI and ASP.NET/React workbench"
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Berkay Özdemir"}]
+dependencies = []
+[project.scripts]
+tracelens = "tracelens.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.black]
+line-length = 100
+target-version = ['py39']

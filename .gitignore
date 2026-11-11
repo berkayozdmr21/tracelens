@@ -1,0 +1,16 @@
+.tools/
+.runtime/
+.venv/
+.contextpilot/
+__pycache__/
+*.pyc
+*.egg-info/
+node_modules/
+dist/
+**/bin/
+**/obj/
+*.db*
+.env
+test-results/
+playwright-report/
+build/

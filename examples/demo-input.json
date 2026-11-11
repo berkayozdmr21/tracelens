@@ -1,0 +1,183 @@
+{
+  "left": {
+    "schemaVersion": 1,
+    "label": "Local / Windows",
+    "platform": {
+      "system": "Windows",
+      "arch": "x86_64",
+      "caseSensitive": false
+    },
+    "tools": {
+      "node": {
+        "status": "available",
+        "version": "24.1.0"
+      },
+      "dotnet": {
+        "status": "available",
+        "version": "10.0.402"
+      },
+      "python": {
+        "status": "available",
+        "version": "3.12.9"
+      },
+      "git": {
+        "status": "available",
+        "version": "2.44.0"
+      }
+    },
+    "project": {
+      "name": "checkout-studio",
+      "engines": {
+        "node": ">=22 <25"
+      },
+      "frameworks": [
+        "net10.0"
+      ],
+      "packageManager": "npm@10.8.2",
+      "dependencies": [
+        {
+          "name": "react",
+          "version": "19.3.1",
+          "kind": "dependencies"
+        },
+        {
+          "name": "vite",
+          "version": "7.3.7",
+          "kind": "devDependencies"
+        }
+      ],
+      "env": [
+        {
+          "name": "DATABASE_URL",
+          "defined": true
+        },
+        {
+          "name": "PUBLIC_API_BASE",
+          "defined": true
+        }
+      ],
+      "locks": [
+        {
+          "file": "package-lock.json",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    },
+    "files": [
+      "web/main.ts",
+      "web/services/userService.ts",
+      "scripts/verify.sh",
+      "api/Checkout.csproj"
+    ],
+    "imports": [
+      {
+        "file": "web/main.ts",
+        "line": 12,
+        "spec": "./services/UserService",
+        "target": "web/services/userService.ts",
+        "caseMismatch": true
+      }
+    ],
+    "scripts": [
+      {
+        "file": "scripts/verify.sh",
+        "crlf": true
+      }
+    ],
+    "capture": {
+      "limited": false,
+      "probeEnabled": false
+    }
+  },
+  "right": {
+    "schemaVersion": 1,
+    "label": "CI / Linux",
+    "platform": {
+      "system": "Linux",
+      "arch": "aarch64",
+      "caseSensitive": true
+    },
+    "tools": {
+      "node": {
+        "status": "available",
+        "version": "20.19.0"
+      },
+      "dotnet": {
+        "status": "available",
+        "version": "8.0.405"
+      },
+      "python": {
+        "status": "available",
+        "version": "3.12.9"
+      },
+      "git": {
+        "status": "available",
+        "version": "2.44.0"
+      }
+    },
+    "project": {
+      "name": "checkout-studio",
+      "engines": {
+        "node": ">=22 <25"
+      },
+      "frameworks": [
+        "net10.0"
+      ],
+      "packageManager": "npm@10.8.2",
+      "dependencies": [
+        {
+          "name": "react",
+          "version": "19.2.0",
+          "kind": "dependencies"
+        },
+        {
+          "name": "vite",
+          "version": "7.3.7",
+          "kind": "devDependencies"
+        }
+      ],
+      "env": [
+        {
+          "name": "DATABASE_URL",
+          "defined": false
+        },
+        {
+          "name": "PUBLIC_API_BASE",
+          "defined": true
+        }
+      ],
+      "locks": [
+        {
+          "file": "package-lock.json",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ]
+    },
+    "files": [
+      "web/main.ts",
+      "web/services/userService.ts",
+      "scripts/verify.sh",
+      "api/Checkout.csproj"
+    ],
+    "imports": [
+      {
+        "file": "web/main.ts",
+        "line": 12,
+        "spec": "./services/UserService",
+        "target": "web/services/userService.ts",
+        "caseMismatch": true
+      }
+    ],
+    "scripts": [
+      {
+        "file": "scripts/verify.sh",
+        "crlf": true
+      }
+    ],
+    "capture": {
+      "limited": false,
+      "probeEnabled": false
+    }
+  },
+  "log": "2026-11-10T09:14:01Z INFO Checkout verification started\n2026-11-10T09:14:02Z npm WARN EBADENGINE required node >=22, current node v20.19.0\n2026-11-10T09:14:03Z web/main.ts(12,29): error TS2307: Cannot find module './services/UserService'\n2026-11-10T09:14:04Z error NETSDK1045: The current .NET SDK does not support targeting .NET 10.0\n2026-11-10T09:14:05Z ERROR DATABASE_URL is not configured\n2026-11-10T09:14:06Z scripts/verify.sh: bad interpreter: /bin/bash^M: not found\n2026-11-10T09:14:07Z ERROR Verification failed\n"
+}

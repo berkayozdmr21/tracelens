@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "label": "Local / Windows",
+  "platform": {
+    "system": "Windows",
+    "arch": "x86_64",
+    "caseSensitive": false
+  },
+  "tools": {
+    "node": {
+      "status": "available",
+      "version": "24.1.0"
+    },
+    "dotnet": {
+      "status": "available",
+      "version": "10.0.402"
+    },
+    "python": {
+      "status": "available",
+      "version": "3.12.9"
+    },
+    "git": {
+      "status": "available",
+      "version": "2.44.0"
+    }
+  },
+  "project": {
+    "name": "checkout-studio",
+    "engines": {
+      "node": ">=22 <25"
+    },
+    "frameworks": [
+      "net10.0"
+    ],
+    "packageManager": "npm@10.8.2",
+    "dependencies": [
+      {
+        "name": "react",
+        "version": "19.3.1",
+        "kind": "dependencies"
+      },
+      {
+        "name": "vite",
+        "version": "7.3.7",
+        "kind": "devDependencies"
+      }
+    ],
+    "env": [
+      {
+        "name": "DATABASE_URL",
+        "defined": true
+      },
+      {
+        "name": "PUBLIC_API_BASE",
+        "defined": true
+      }
+    ],
+    "locks": [
+      {
+        "file": "package-lock.json",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "files": [
+    "web/main.ts",
+    "web/services/userService.ts",
+    "scripts/verify.sh",
+    "api/Checkout.csproj"
+  ],
+  "imports": [
+    {
+      "file": "web/main.ts",
+      "line": 12,
+      "spec": "./services/UserService",
+      "target": "web/services/userService.ts",
+      "caseMismatch": true
+    }
+  ],
+  "scripts": [
+    {
+      "file": "scripts/verify.sh",
+      "crlf": true
+    }
+  ],
+  "capture": {
+    "limited": false,
+    "probeEnabled": false
+  }
+}

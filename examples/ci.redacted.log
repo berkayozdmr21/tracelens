@@ -1,0 +1,7 @@
+2026-11-10T09:14:01Z INFO Checkout verification started
+2026-11-10T09:14:02Z npm WARN EBADENGINE required node >=22, current node v20.19.0
+2026-11-10T09:14:03Z web/main.ts(12,29): error TS2307: Cannot find module './services/UserService'
+2026-11-10T09:14:04Z error NETSDK1045: The current .NET SDK does not support targeting .NET 10.0
+2026-11-10T09:14:05Z ERROR DATABASE_URL is not configured
+2026-11-10T09:14:06Z scripts/verify.sh: bad interpreter: /bin/bash^M: not found
+2026-11-10T09:14:07Z ERROR Verification failed
