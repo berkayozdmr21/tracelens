@@ -11,6 +11,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   engine:
+    timeout-minutes: 10
     name: Engine / ${{ matrix.os }} / Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -28,12 +29,14 @@ jobs:
       - run: tracelens compare examples/left.snapshot.json examples/right.snapshot.json --log examples/ci.redacted.log --out report.json
       - run: tracelens bundle examples/left.snapshot.json examples/right.snapshot.json --log examples/ci.redacted.log --out evidence.zip
   workbench:
+    timeout-minutes: 15
     name: API and browser workflow
     runs-on: ubuntu-24.04
     env:
       ASPNETCORE_URLS: http://127.0.0.1:9281
       DataPath: .runtime/ci
       PythonPath: python
+      PLAYWRIGHT_CHANNEL: chrome
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -59,7 +62,7 @@ jobs:
           cat .runtime/api.log
           exit 1
       - run: npm run test:api
-      - run: npx playwright install --with-deps chromium
+      - run: google-chrome --version
       - run: npm run test:ui
       - uses: actions/upload-artifact@v4
         if: always()
