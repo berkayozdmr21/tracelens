@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-latest]
         python: ["3.9", "3.12"]
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
       - run: tracelens bundle examples/left.snapshot.json examples/right.snapshot.json --log examples/ci.redacted.log --out evidence.zip
   workbench:
     name: API and browser workflow
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       ASPNETCORE_URLS: http://127.0.0.1:9281
       DataPath: .runtime/ci

@@ -75,6 +75,7 @@ def read(root, name):
 
 
 def probe(name, root):
+    root = Path(root).resolve()
     executable = sys.executable if name == "python" else shutil.which(name)
     if not executable:
         return {"status": "missing", "version": None}
