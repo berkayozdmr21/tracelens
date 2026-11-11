@@ -1081,6 +1081,8 @@ function NewCase({
     }
   }
   async function sample() {
+    setBusy(true);
+    setError("");
     try {
       const example = await api<{
         left: Snapshot;
@@ -1093,6 +1095,8 @@ function NewCase({
       setTitle("Checkout / Linux CI");
     } catch (e) {
       setError((e as Error).message);
+    } finally {
+      setBusy(false);
     }
   }
   const label = (text: string) => {
@@ -1150,6 +1154,7 @@ function NewCase({
           İnceleme adı
           <input
             value={title}
+            disabled={busy}
             onChange={(e) => setTitle(e.target.value)}
             maxLength={100}
             required
